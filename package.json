@@ -4,7 +4,7 @@
   "description": "We register stuff",
   "scripts": {
     "all": "npm run validate",
-    "validate": "npx ajv validate  -d registry/**/plugin.json -s schema/registry.schema.json -r schema/version.schema.json -r schema/source.schema.json -r schema/plugin-meta-data.schema.json --allow-union-types"
+    "validate": "npx ajv validate  -d registry/**/plugin.json -s schema/registry.schema.json -r \"schema/refs/*.schema.json\" --allow-union-types"
   },
   "author": "",
   "license": "ISC",
