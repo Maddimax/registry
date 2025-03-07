@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "icon": {},
+    "small_icon": {},
+    "extension_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "vendor_id": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "display_vendor": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "latest": {
+      "type": "string"
+    },
+    "versions": {
+      "type": "object",
+      "patternProperties": {
+        "^(?'MAJOR'0|(?:[1-9]\\d*))\\.(?'MINOR'0|(?:[1-9]\\d*))\\.(?'PATCH'0|(?:[1-9]\\d*))(?:-(?'prerelease'(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*))(?:\\.(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*)))*))?(?:\\+(?'build'(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*))(?:\\.(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*)))*))?$": {
+          "type": "object",
+          "properties": {
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "Id": {
+                  "type": "string"
+                },
+                "Url": {
+                  "type": "string"
+                },
+                "Name": {
+                  "type": "string"
+                },
+                "Tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "Vendor": {
+                  "type": "string"
+                },
+                "License": {
+                  "type": "string"
+                },
+                "Version": {
+                  "type": "string"
+                },
+                "Category": {
+                  "type": "string"
+                },
+                "VendorId": {
+                  "type": "string"
+                },
+                "Copyright": {
+                  "type": "string"
+                },
+                "Languages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "Dependencies": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Id": {
+                        "type": "string"
+                      },
+                      "Type": {
+                        "type": "string"
+                      },
+                      "Version": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "Id",
+                      "Type",
+                      "Version"
+                    ]
+                  }
+                },
+                "Experimental": {
+                  "type": "boolean"
+                },
+                "CompatVersion": {
+                  "type": "string"
+                },
+                "DisabledByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "Id",
+                "Url",
+                "Name",
+                "Tags",
+                "Vendor",
+                "License",
+                "Version",
+                "Category",
+                "VendorId",
+                "Copyright",
+                "Languages",
+                "Description",
+                "Dependencies",
+                "Experimental",
+                "CompatVersion",
+                "DisabledByDefault"
+              ]
+            }
+          },
+          "required": [
+            "sources",
+            "metadata"
+          ]
+        }
+      },
+      "required": []
+    }
+  },
+  "required": [
+    "tags",
+    "icon",
+    "small_icon",
+    "extension_id",
+    "version",
+    "vendor_id",
+    "display_name",
+    "display_vendor",
+    "license",
+    "latest",
+    "versions"
+  ]
+}
