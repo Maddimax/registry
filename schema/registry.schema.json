@@ -1,24 +1,44 @@
 {
+  "$id": "https://qt.io/qt-creator/schemas/registry.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Generated schema for Root",
+  "title": "Extension registry schema",
+  "description": "Schema for the extension registry",
   "type": "object",
   "properties": {
+    "$schema": {
+      "const": "../../schema/registry.schema.json"
+    },
     "tags": {
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "minItems": 1
     },
-    "icon": {},
-    "small_icon": {},
+    "icon": {
+      "type": "string"
+    },
+    "small_icon": {
+      "type": "string"
+    },
     "extension_id": {
-      "type": "string"
-    },
-    "version": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-z]+$",
+      "examples": [
+        "vale",
+        "lua",
+        "cppeditor"
+      ],
+      "title": "Extension ID, must be all lowercase letters."
     },
     "vendor_id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-z]+$",
+      "examples": [
+        "theqtcompany",
+        "kde",
+        "kdab"
+      ]
     },
     "display_name": {
       "type": "string"
@@ -27,10 +47,14 @@
       "type": "string"
     },
     "license": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "open-source",
+        "commercial"
+      ]
     },
     "latest": {
-      "type": "string"
+      "$ref": "version.schema.json"
     },
     "versions": {
       "type": "object",
@@ -41,111 +65,11 @@
             "sources": {
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "url": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "url"
-                ]
+                "$ref": "source.schema.json"
               }
             },
             "metadata": {
-              "type": "object",
-              "properties": {
-                "Id": {
-                  "type": "string"
-                },
-                "Url": {
-                  "type": "string"
-                },
-                "Name": {
-                  "type": "string"
-                },
-                "Tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "Vendor": {
-                  "type": "string"
-                },
-                "License": {
-                  "type": "string"
-                },
-                "Version": {
-                  "type": "string"
-                },
-                "Category": {
-                  "type": "string"
-                },
-                "VendorId": {
-                  "type": "string"
-                },
-                "Copyright": {
-                  "type": "string"
-                },
-                "Languages": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "Dependencies": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "Id": {
-                        "type": "string"
-                      },
-                      "Type": {
-                        "type": "string"
-                      },
-                      "Version": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "Id",
-                      "Version"
-                    ]
-                  }
-                },
-                "Experimental": {
-                  "type": "boolean"
-                },
-                "CompatVersion": {
-                  "type": "string"
-                },
-                "DisabledByDefault": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "Id",
-                "Url",
-                "Name",
-                "Tags",
-                "Vendor",
-                "License",
-                "Version",
-                "Category",
-                "VendorId",
-                "Copyright",
-                "Languages",
-                "Description",
-                "Dependencies",
-                "Experimental",
-                "CompatVersion",
-                "DisabledByDefault"
-              ]
+              "$ref": "plugin-meta-data.schema.json"
             }
           },
           "required": [
@@ -154,20 +78,17 @@
           ]
         }
       },
-      "required": []
+      "minProperties": 1
     }
   },
   "required": [
-    "tags",
-    "icon",
-    "small_icon",
-    "extension_id",
-    "version",
     "vendor_id",
+    "extension_id",
     "display_name",
     "display_vendor",
     "license",
     "latest",
     "versions"
-  ]
+  ],
+  "additionalProperties": false
 }

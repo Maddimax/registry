@@ -1,0 +1,128 @@
+{
+    "$id": "https://qt.io/qt-creator/schemas/plugin-meta-data.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Plugin metadata schema",
+    "description": "Schema for a plugins meta data",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "Id": {
+            "type": "string",
+            "pattern": "^[a-z]+$"
+        },
+        "Url": {
+            "type": "string"
+        },
+        "Name": {
+            "type": "string"
+        },
+        "Tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "Type": {
+            "type": "string",
+            "enum": [
+                "Script"
+            ]
+        },
+        "Vendor": {
+            "type": "string"
+        },
+        "License": {
+            "type": "string"
+        },
+        "Version": {
+            "$ref": "version.schema.json"
+        },
+        "Category": {
+            "type": "string"
+        },
+        "VendorId": {
+            "type": "string",
+            "pattern": "^[a-z]+$"
+        },
+        "Copyright": {
+            "type": "string"
+        },
+        "Languages": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "Description": {
+            "type": [
+                "array",
+                "string"
+            ],
+            "items": {
+                "type": "string"
+            }
+        },
+        "LongDescription": {
+            "type": [
+                "array",
+                "string"
+            ],
+            "items": {
+                "type": "string"
+            }
+        },
+        "Dependencies": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Id": {
+                        "type": "string"
+                    },
+                    "Type": {
+                        "type": "string",
+                        "enum": [
+                            "Required",
+                            "Optional",
+                            "Testing"
+                        ]
+                    },
+                    "Version": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Id",
+                    "Version"
+                ]
+            }
+        },
+        "Experimental": {
+            "type": "boolean"
+        },
+        "CompatVersion": {
+            "type": "string"
+        },
+        "DisabledByDefault": {
+            "type": "boolean"
+        }
+    },
+    "required": [
+        "Id",
+        "Url",
+        "Name",
+        "Tags",
+        "Vendor",
+        "License",
+        "Version",
+        "Category",
+        "VendorId",
+        "Copyright",
+        "Languages",
+        "Description",
+        "Dependencies",
+        "Experimental",
+        "CompatVersion",
+        "DisabledByDefault"
+    ]
+}

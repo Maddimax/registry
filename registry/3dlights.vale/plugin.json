@@ -1,16 +1,7 @@
 {
     "$schema": "../../schema/registry.schema.json",
-    "tags": [
-        "language server",
-        "Vale",
-        "ValeLS",
-        "Qt"
-    ],
-    "icon": null,
-    "small_icon": null,
-    "extension_id": "theqtcompany.vale",
-    "version": "1.0.1",
     "vendor_id": "theqtcompany",
+    "extension_id": "vale",
     "display_name": "Vale Language Server",
     "display_vendor": "The Qt Company",
     "license": "open-source",
@@ -19,7 +10,11 @@
         "1.0.2": {
             "sources": [
                 {
-                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip"
+                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
+                    "platform": {
+                        "name": "Windows",
+                        "architecture": "x86_64"
+                    }
                 }
             ],
             "metadata": {
@@ -44,6 +39,11 @@
                     "de"
                 ],
                 "Description": "Provides an integration of the Vale language server",
+                "LongDescription": [
+                    "This is a long description",
+                    "so we break it up into lines",
+                    "to make it easier to read"
+                ],
                 "Dependencies": [
                     {
                         "Id": "lualanguageclient",
@@ -133,5 +133,11 @@
                 "DisabledByDefault": false
             }
         }
-    }
+    },
+    "tags": [
+        "language server",
+        "Vale",
+        "ValeLS",
+        "Qt"
+    ]
 }
