@@ -9,7 +9,7 @@ This contains a registry of extensions.
 
 1. Fork this repository
 2. Add a new folder in the `registry` folder with the name `<vendorid>.<pluginid>`
-3. Add a `plugin.json` file in your new folder with the following content:
+3. Add a `extension.json` file in your new folder with the following content:
 ```json
 {
     "$schema": "../../schema/registry.schema.json",

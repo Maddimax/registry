@@ -4,8 +4,8 @@
   "description": "We register stuff",
   "scripts": {
     "all": "npm run validate && npm run update-ext-badge",
-    "update-ext-badge": "npx badge Extensions $(find registry -name plugin.json | wc -l) :brightgreen > badges/extensions.svg",
-    "validate": "npx ajv validate -d \"registry/**/plugin.json\" -s schema/registry.schema.json -r \"schema/*.ref.json\" --allow-union-types"
+    "update-ext-badge": "npx badge Extensions $(find registry -name extension.json | wc -l) :brightgreen > badges/extensions.svg",
+    "validate": "npx ajv validate -d \"registry/**/extension.json\" -s schema/registry.schema.json -r \"schema/*.ref.json\" --allow-union-types"
   },
   "author": "",
   "license": "ISC",
