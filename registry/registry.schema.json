@@ -35,7 +35,7 @@
     "versions": {
       "type": "object",
       "patternProperties": {
-        "^(?'MAJOR'0|(?:[1-9]\\d*))\\.(?'MINOR'0|(?:[1-9]\\d*))\\.(?'PATCH'0|(?:[1-9]\\d*))(?:-(?'prerelease'(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*))(?:\\.(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*)))*))?(?:\\+(?'build'(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*))(?:\\.(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*)))*))?$": {
+        "^[0-9]+\\.[0-9]+\\.[0-9]+$": {
           "type": "object",
           "properties": {
             "sources": {
@@ -114,7 +114,6 @@
                     },
                     "required": [
                       "Id",
-                      "Type",
                       "Version"
                     ]
                   }

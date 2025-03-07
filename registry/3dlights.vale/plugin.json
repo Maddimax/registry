@@ -17,7 +17,11 @@
     "latest": "1.0.2",
     "versions": {
         "1.0.2": {
-            "sources": 10,
+            "sources": [
+                {
+                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip"
+                }
+            ],
             "metadata": {
                 "Id": "vale",
                 "Url": "https://www.qt.io",
