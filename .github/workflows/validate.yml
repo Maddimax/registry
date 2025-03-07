@@ -20,5 +20,5 @@ jobs:
     - name: Run jsonschema validation
       run: |
         for file in $(find ./registry -name '*.json'); do
-          check-jsonschema --schemafile ./registry/registry.schema.json $file
+          check-jsonschema --schemafile ./schema/registry.schema.json $file
         done
