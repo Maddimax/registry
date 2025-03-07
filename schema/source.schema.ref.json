@@ -1,5 +1,5 @@
 {
-    "$id": "https://qt.io/qt-creator/schemas/source.schema.json",
+    "$id": "https://qt.io/qt-creator/schemas/source.schema.ref.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Plugin source schema",
     "description": "Schema for a plugins source link",

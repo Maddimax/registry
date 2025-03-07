@@ -1,5 +1,5 @@
 {
-    "$id": "https://qt.io/qt-creator/schemas/plugin-meta-data.schema.json",
+    "$id": "https://qt.io/qt-creator/schemas/plugin-meta-data.schema.ref.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Plugin metadata schema",
     "description": "Schema for a plugins meta data",
@@ -33,7 +33,7 @@
             "type": "string"
         },
         "Version": {
-            "$ref": "version.schema.json"
+            "$ref": "version.schema.ref.json"
         },
         "Category": {
             "type": "string"
@@ -103,24 +103,25 @@
         },
         "DisabledByDefault": {
             "type": "boolean"
+        },
+        "SoftLoadable": {
+            "type": "boolean"
+        },
+        "DocumentationUrl": {
+            "type": "string"
         }
     },
     "required": [
         "Id",
         "Url",
         "Name",
-        "Tags",
         "Vendor",
         "License",
         "Version",
-        "Category",
         "VendorId",
         "Copyright",
-        "Languages",
         "Description",
         "Dependencies",
-        "Experimental",
-        "CompatVersion",
-        "DisabledByDefault"
+        "CompatVersion"
     ]
 }

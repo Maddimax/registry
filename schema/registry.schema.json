@@ -54,7 +54,7 @@
       ]
     },
     "latest": {
-      "$ref": "version.schema.json"
+      "$ref": "version.schema.ref.json"
     },
     "versions": {
       "type": "object",
@@ -65,11 +65,11 @@
             "sources": {
               "type": "array",
               "items": {
-                "$ref": "source.schema.json"
+                "$ref": "source.schema.ref.json"
               }
             },
             "metadata": {
-              "$ref": "plugin-meta-data.schema.json"
+              "$ref": "plugin-meta-data.schema.ref.json"
             }
           },
           "required": [
