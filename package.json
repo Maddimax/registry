@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "We register stuff",
   "scripts": {
-    "all": "npm run validate",
+    "all": "npm run validate && npm run update-ext-badge",
+    "update-ext-badge": "npx badge Extensions $(find registry -name plugin.json | wc -l) :brightgreen > badges/extensions.svg",
     "validate": "npx ajv validate  -d registry/**/plugin.json -s schema/registry.schema.json -r \"schema/refs/*.schema.json\" --allow-union-types"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ajv-cli": "^5.0.0"
+    "ajv-cli": "^5.0.0",
+    "badge-maker": "^4.1.0"
   }
 }

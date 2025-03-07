@@ -1,5 +1,8 @@
 # The Registry
 
+[![NrOfExtensions](./badges/extensions.svg)](./badges/extensions.svg)
+[![Check dist/](https://github.com/Maddimax/registry/actions/workflows/validate.yml/badge.svg)](https://github.com/Maddimax/registry/actions/workflows/validate.yml)
+
 This contains a registry of extensions.
 
 ## How to include your plugin
