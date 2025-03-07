@@ -11,7 +11,7 @@
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
-                    "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
                     "platform": {
                         "name": "Windows",
                         "architecture": "x86_64"
@@ -60,7 +60,7 @@
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
-                    "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
                 }
             ],
             "metadata": {
@@ -79,6 +79,7 @@
                 "Category": "Language Server",
                 "VendorId": "theqtcompany",
                 "Copyright": "(C) The Qt Company 2024",
+                "Type": "Script",
                 "Languages": [
                     "en",
                     "de"
@@ -99,7 +100,7 @@
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.4/ValeLS.zip",
-                    "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
                 }
             ],
             "metadata": {
@@ -118,6 +119,7 @@
                 "Category": "Language Server",
                 "VendorId": "theqtcompany",
                 "Copyright": "(C) The Qt Company 2024",
+                "Type": "Script",
                 "Languages": [
                     "en",
                     "de"
