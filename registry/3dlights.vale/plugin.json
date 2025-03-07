@@ -85,7 +85,6 @@
                 "Dependencies": [
                     {
                         "Id": "lualanguageclient",
-                        "Type": "scripting",
                         "Version": "20.0.0"
                     }
                 ],
@@ -124,7 +123,6 @@
                 "Dependencies": [
                     {
                         "Id": "lualanguageclient",
-                        "Type": "scripting",
                         "Version": "15.0.0"
                     }
                 ],

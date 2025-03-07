@@ -24,9 +24,7 @@
         },
         "Type": {
             "type": "string",
-            "enum": [
-                "Script"
-            ]
+            "const": "Script"
         },
         "Vendor": {
             "type": "string"
