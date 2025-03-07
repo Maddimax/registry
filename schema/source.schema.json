@@ -8,6 +8,10 @@
         "url": {
             "type": "string"
         },
+        "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+        },
         "platform": {
             "type": "object",
             "properties": {
@@ -33,5 +37,9 @@
                 "architecture"
             ]
         }
-    }
+    },
+    "required": [
+        "url",
+        "sha256"
+    ]
 }

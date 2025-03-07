@@ -11,6 +11,7 @@
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
+                    "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
                     "platform": {
                         "name": "Windows",
                         "architecture": "x86_64"
@@ -58,7 +59,8 @@
         "1.0.1": {
             "sources": [
                 {
-                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip"
+                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
+                    "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
                 }
             ],
             "metadata": {
@@ -96,7 +98,8 @@
         "1.0.0": {
             "sources": [
                 {
-                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.4/ValeLS.zip"
+                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.4/ValeLS.zip",
+                    "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
                 }
             ],
             "metadata": {

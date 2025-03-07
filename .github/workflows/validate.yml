@@ -10,15 +10,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Setup python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.13'
-        cache: 'pip' # caching pip dependencies
-    - run: pip install -r requirements.txt
-
-    - name: Run jsonschema validation
-      run: |
-        for file in $(find ./registry -name '*.json'); do
-          check-jsonschema --schemafile ./schema/registry.schema.json $file
-        done
+    - name: Validate json files
+      run: npm run validate
