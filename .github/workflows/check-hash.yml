@@ -3,7 +3,7 @@ name: Check Hashes
 on: [pull_request]
 
 jobs:
-  validate:
+  checkhashes:
     name: Check hashes
     runs-on: ubuntu-latest
     steps:
