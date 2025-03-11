@@ -1,7 +1,11 @@
 const Ajv = require("ajv/")
 const path = require("path")
 const fs = require("fs")
-const styleText = require('node:util').styleText
+const styleTextOrg = require('node:util').styleText
+
+function styleText(color, text) {
+    return styleTextOrg(color, text, {validateStream: false})
+}
 
 const extensionSchema = require(path.join(__dirname, "..", "schema", "extension.schema.json"))
 const packSchema = require(path.join(__dirname, "..", "schema", "pack.schema.json"))
