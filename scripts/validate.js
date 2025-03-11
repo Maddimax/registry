@@ -4,7 +4,7 @@ const fs = require("fs")
 const styleTextOrg = require('node:util').styleText
 
 function styleText(color, text) {
-    return styleTextOrg(color, text, {validateStream: false})
+    return styleTextOrg(color, text, {validateStream: process.env.CI !== "true"})
 }
 
 const extensionSchema = require(path.join(__dirname, "..", "schema", "extension.schema.json"))
