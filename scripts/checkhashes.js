@@ -40,8 +40,12 @@ async function shaFromUrl(url) {
     })
 }
 
-async function main() {
-    const {stdout, stderr}  =await exec('git diff --name-only origin/main...HEAD');
+async function main(argv) {
+    const from = argv[2] || 'main';
+    const to = argv[3] || 'HEAD';
+
+    console.log(`Checking for changes from ${styleText('blue', from)} to ${styleText('blue', to)}`);
+    const {stdout, stderr} = await exec(`git diff --name-only ${from}...${to}`);
     if (stderr) {
         console.error(stderr);
         return 1;
@@ -69,6 +73,8 @@ async function main() {
     return 0
 }
 
-main().then((code) => {
+
+
+main(process.argv).then((code) => {
     process.exit(code)
 })

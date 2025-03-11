@@ -10,7 +10,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Validate hashes
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+    - name: Validate json files
+      run: npm run check-hashes ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
