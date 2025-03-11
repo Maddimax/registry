@@ -10,7 +10,7 @@ const styleTextOrg = require('node:util').styleText
 function styleText(color, text) {
     // Github actions don't have a real tty, so styleText will normally output monochrome text.
     // But we check if the "CI" env variable is set to "true" and if so, we disable the stream validation.
-    return styleTextOrg(color, text, {validateStream: process.env.CI !== "true"})
+    return styleTextOrg(color, text, { validateStream: process.env.CI !== "true" })
 }
 
 function httpGet(url, resolve, reject) {
@@ -45,7 +45,7 @@ async function main(argv) {
     const to = argv[3] || 'HEAD';
 
     console.log(`Checking for changes from ${styleText('blue', from)} to ${styleText('blue', to)}`);
-    const {stdout, stderr} = await exec(`git diff --name-only ${from}...${to}`);
+    const { stdout, stderr } = await exec(`git diff --name-only ${from}...${to}`);
     if (stderr) {
         console.error(stderr);
         return 1;
@@ -53,9 +53,9 @@ async function main(argv) {
     const files = stdout.split('\n').filter(file => file.includes('registry') && path.basename(file) === 'extension.json');
     for (const file of files) {
         const content = JSON.parse(await fs.readFile(file));
-        for(const version in content.versions) {
+        for (const version in content.versions) {
             const sources = content.versions[version].sources
-            for(const source of sources) {
+            for (const source of sources) {
                 const url = source.url
                 const sha256 = source.sha256
                 console.log(`Now checking ${styleText('grey', url)} with hash ${styleText('grey', sha256)}`);
