@@ -1,10 +1,18 @@
 {
-    "$schema": "../../schema/registry.schema.json",
-    "vendor_id": "theqtcompany",
-    "extension_id": "vale",
-    "display_name": "Vale Language Server",
-    "display_vendor": "The Qt Company",
-    "license": "open-source",
+    "$schema": "../../schema/extension.schema.json",
+    "info": {
+        "id": "vale",
+        "vendor_id": "theqtcompany",
+        "display_name": "Vale Language Server",
+        "display_vendor": "The Qt Company",
+        "license": "open-source",
+        "tags": [
+            "language server",
+            "Vale",
+            "ValeLS",
+            "Qt"
+        ]
+    },
     "latest": "1.0.2",
     "versions": {
         "1.0.2": {
@@ -136,11 +144,5 @@
                 "DisabledByDefault": false
             }
         }
-    },
-    "tags": [
-        "language server",
-        "Vale",
-        "ValeLS",
-        "Qt"
-    ]
+    }
 }

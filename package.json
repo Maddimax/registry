@@ -5,7 +5,9 @@
   "scripts": {
     "all": "npm run validate && npm run update-ext-badge",
     "update-ext-badge": "npx badge Extensions $(find registry -name extension.json | wc -l) :brightgreen > badges/extensions.svg",
-    "validate": "npx ajv validate -d \"registry/**/extension.json\" -s schema/registry.schema.json -r \"schema/*.ref.json\" --allow-union-types"
+    "validate": "npm run validate-extensions && npm run validate-packs",
+    "validate-extensions": "npx ajv validate -d \"registry/**/extension.json\" -s schema/extension.schema.json -r \"schema/*.ref.json\" --allow-union-types",
+    "validate-packs": "npx ajv validate -d \"registry/**/pack.json\" -s schema/pack.schema.json -r \"schema/*.ref.json\" --allow-union-types"
   },
   "author": "",
   "license": "ISC",
