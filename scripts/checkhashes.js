@@ -40,6 +40,18 @@ async function shaFromUrl(url) {
     })
 }
 
+async function checkSource(source) {
+    console.log(`Checking ${styleText('blue', source.url)}`);
+    const actualSha = await shaFromUrl(source.url)
+
+    if (actualSha !== source.sha256) {
+        console.error(`Hash mismatch for ${styleText('red', source.url)}: expected ${styleText('green', source.sha256)} but got ${styleText('red', actualSha)}`);
+        return 1;
+    }
+
+    return 0;
+}
+
 async function main(argv) {
     const from = argv[2] || 'main';
     const to = argv[3] || 'HEAD';
@@ -51,24 +63,18 @@ async function main(argv) {
         return 1;
     }
     const failedHashes
-        = (await Promise.all((await Promise.all(stdout
-            .split('\n')
-            .filter(file => file.includes('registry') && path.basename(file) === 'extension.json')
-            .map(async file => JSON.parse(await fs.readFile(file)))
-            .map(async content => Object.values((await content).versions))))
-            .flat()
-            .map(version => version.sources)
-            .flat()
-            .map(async source => {
-                const actualSha = await shaFromUrl(source.url)
-
-                if (actualSha !== source.sha256) {
-                    console.error(`Hash mismatch for ${styleText('red', source.url)}: expected ${styleText('green', source.sha256)} but got ${styleText('red', actualSha)}`);
-                    return 1;
-                }
-
-                return 0;
-            }))).reduce((acc, val) => acc + val);
+        = (await Promise.all(
+            (await Promise.all(
+                stdout
+                    .split('\n')
+                    .filter(file => file.includes('registry') && path.basename(file) === 'extension.json')
+                    .map(async file => JSON.parse(await fs.readFile(file)))
+                    .map(async content => Object.values((await content).versions))))
+                .flat()
+                .map(version => version.sources)
+                .flat()
+                .map(checkSource)))
+            .reduce((acc, val) => acc + val, 0);
 
     if (failedHashes > 0) {
         console.error('Hash check failed');

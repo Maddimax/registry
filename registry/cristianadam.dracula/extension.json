@@ -60,6 +60,7 @@
                     }
                 }
             ],
+
             "metadata": {
                 "Id": "dracula",
                 "Url": "https://github.com/cristianadam/qt-creator-dracula",
