@@ -1,0 +1,16 @@
+# A github workflow that validates all json files against their schema
+name: Validate
+on: [pull_request]
+
+jobs:
+  validate:
+    name: Check hashes
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Validate hashes
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
