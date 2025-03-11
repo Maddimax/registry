@@ -50,26 +50,32 @@ async function main(argv) {
         console.error(stderr);
         return 1;
     }
-    const files = stdout.split('\n').filter(file => file.includes('registry') && path.basename(file) === 'extension.json');
-    for (const file of files) {
-        const content = JSON.parse(await fs.readFile(file));
-        for (const version in content.versions) {
-            const sources = content.versions[version].sources
-            for (const source of sources) {
-                const url = source.url
-                const sha256 = source.sha256
-                console.log(`Now checking ${styleText('grey', url)} with hash ${styleText('grey', sha256)}`);
-                const actualSha = await shaFromUrl(url)
+    const failedHashes
+        = (await Promise.all((await Promise.all(stdout
+            .split('\n')
+            .filter(file => file.includes('registry') && path.basename(file) === 'extension.json')
+            .map(async file => JSON.parse(await fs.readFile(file)))
+            .map(async content => Object.values((await content).versions))))
+            .flat()
+            .map(version => version.sources)
+            .flat()
+            .map(async source => {
+                const actualSha = await shaFromUrl(source.url)
 
-                if (actualSha !== sha256) {
-                    console.error(`Hash mismatch for ${styleText('red', url)}: expected ${styleText('red', sha256)} but got ${styleText('red', actualSha)}`);
+                if (actualSha !== source.sha256) {
+                    console.error(`Hash mismatch for ${styleText('red', source.url)}: expected ${styleText('green', source.sha256)} but got ${styleText('red', actualSha)}`);
                     return 1;
-                } else {
-                    console.log(styleText('green', `Ok`));
                 }
-            }
-        }
+
+                return 0;
+            }))).reduce((acc, val) => acc + val);
+
+    if (failedHashes > 0) {
+        console.error('Hash check failed');
+        return failedHashes;
     }
+
+    console.log(styleText('green', 'All hashes match'));
     return 0
 }
 
