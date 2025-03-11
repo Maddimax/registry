@@ -6,7 +6,7 @@ const styleTextOrg = require('node:util').styleText
 function styleText(color, text) {
     // Github actions don't have a real tty, so styleText will normally output monochrome text.
     // But we check if the "CI" env variable is set to "true" and if so, we disable the stream validation.
-    return styleTextOrg(color, text, {validateStream: process.env.CI !== "true"})
+    return styleTextOrg(color, text, { validateStream: process.env.CI !== "true" })
 }
 
 const extensionSchema = require(path.join(__dirname, "..", "schema", "extension.schema.json"))
@@ -17,7 +17,7 @@ const sourceSchema = require(path.join(__dirname, "..", "schema", "source.schema
 const versionSchema = require(path.join(__dirname, "..", "schema", "version.schema.ref.json"))
 const pluginMetaDataSchema = require(path.join(__dirname, "..", "schema", "plugin-meta-data.schema.ref.json"))
 
-const ajv = new Ajv({allowUnionTypes: true})
+const ajv = new Ajv({ allowUnionTypes: true })
 ajv.addSchema(baseSchema)
 ajv.addSchema(sourceSchema)
 ajv.addSchema(versionSchema)
@@ -29,16 +29,16 @@ const validatePack = ajv.compile(packSchema)
 const registryFolder = path.join(__dirname, "..", "registry")
 
 function enumerateExtensions(directory) {
-  return fs.readdirSync(directory).map((folder)=> {
-    const extpath = path.join(directory, folder, "extension.json")
-    const packpath = path.join(directory, folder, "pack.json")
-    if (fs.existsSync(extpath)) {
-      return extpath
-    } else if(fs.existsSync(packpath)) {
-      return packpath
-    }
-    throw new Error(`No extension or pack found in ${folder}`)
-  })
+    return fs.readdirSync(directory).map((folder) => {
+        const extpath = path.join(directory, folder, "extension.json")
+        const packpath = path.join(directory, folder, "pack.json")
+        if (fs.existsSync(extpath)) {
+            return extpath
+        } else if (fs.existsSync(packpath)) {
+            return packpath
+        }
+        throw new Error(`No extension or pack found in ${folder}`)
+    })
 }
 
 function validate(validator, ext) {
@@ -52,7 +52,7 @@ function validate(validator, ext) {
     console.log(`Schema ${styleText("green", path.relative(registryFolder, ext))}:`, styleText("green", "Ok"))
 }
 
-function validateExtensionData(ext) {    
+function validateExtensionData(ext) {
     for (version in ext.versions) {
         const v = ext.versions[version]
         const metaData = v.metadata
@@ -66,7 +66,7 @@ function validateExtensionData(ext) {
             vendorId: ext.info.vendor_id,
         }
 
-        if (JSON.stringify(vData) !== JSON.stringify(iData) ) {
+        if (JSON.stringify(vData) !== JSON.stringify(iData)) {
             console.error(`Version "${version}" metadata ("${styleText("green", JSON.stringify(iData))}") does not match ("${styleText("red", JSON.stringify(vData))}")`)
             process.exit(1)
         }
@@ -76,7 +76,7 @@ function validateExtensionData(ext) {
 }
 
 enumerateExtensions(registryFolder).forEach((ext) => {
-    if (ext.endsWith('extension.json')){
+    if (ext.endsWith('extension.json')) {
         validate(validateExtension, ext)
         validateExtensionData(JSON.parse(fs.readFileSync(ext)))
     }
