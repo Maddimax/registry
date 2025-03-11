@@ -12,5 +12,5 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Validate json files
+    - name: Check Source hashes of changed extensions
       run: npm run check-hashes ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
