@@ -1,6 +1,6 @@
 # A github workflow that validates all json files against their schema
 name: Validate
-on: [push, pull_request]
+on: push
 
 jobs:
   validate:
@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Validate json files
-      run: npm run all
+      run: npm run validate
 
     # This will fail the workflow if there are any uncommitted changes after the npm run all before.
     # expected.
