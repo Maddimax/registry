@@ -1,5 +1,5 @@
 # A github workflow that validates all json files against their schema
-name: Validate
+name: Check Hashes
 on: [pull_request]
 
 jobs:
