@@ -65,7 +65,7 @@ async function main(argv) {
                     console.error(`Hash mismatch for ${styleText('red', url)}: expected ${styleText('red', sha256)} but got ${styleText('red', actualSha)}`);
                     return 1;
                 } else {
-                    console.log(`Hash for ${styleText('green', url)} matches`);
+                    console.log(styleText('green', `Ok`));
                 }
             }
         }
