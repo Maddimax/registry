@@ -1,7 +1,7 @@
 {
     "$schema": "../../schema/extension.schema.json",
     "info": {
-        "id": "valex",
+        "id": "vale",
         "vendor_id": "theqtcompany",
         "display_name": "Vale Language Server",
         "display_vendor": "The Qt Company",

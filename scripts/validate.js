@@ -4,6 +4,8 @@ const fs = require("fs")
 const styleTextOrg = require('node:util').styleText
 
 function styleText(color, text) {
+    // Github actions don't have a real tty, so styleText will normally output monochrome text.
+    // But we check if the "CI" env variable is set to "true" and if so, we disable the stream validation.
     return styleTextOrg(color, text, {validateStream: process.env.CI !== "true"})
 }
 
@@ -42,23 +44,35 @@ function enumerateExtensions(directory) {
 function validate(validator, ext) {
     const res = validator(JSON.parse(fs.readFileSync(ext)))
     if (!res) {
-        console.error(`Schema ${path.relative(registryFolder, ext)}:`, styleText("red", "failed"))
+        console.error(`Schema ${styleText("red", path.relative(registryFolder, ext))}:`, styleText("red", "failed"))
         console.error(validator.errors)
         process.exit(1)
     }
 
-    console.log(`Schema ${path.relative(registryFolder, ext)}:`, styleText("green", "Ok"))
+    console.log(`Schema ${styleText("green", path.relative(registryFolder, ext))}:`, styleText("green", "Ok"))
 }
 
 function validateExtensionData(ext) {    
     for (version in ext.versions) {
         const v = ext.versions[version]
         const metaData = v.metadata
-        if (metaData.Id != ext.info.id) {
-            console.error(`Version "${version}" metadata Id ("${styleText("green", metaData.Id)}") does not match extension Id ("${styleText("red", ext.info.id)}")`)
+
+        const vData = {
+            id: metaData.Id,
+            vendorId: metaData.VendorId,
+        }
+        const iData = {
+            id: ext.info.id,
+            vendorId: ext.info.vendor_id,
+        }
+
+        if (JSON.stringify(vData) !== JSON.stringify(iData) ) {
+            console.error(`Version "${version}" metadata ("${styleText("green", JSON.stringify(iData))}") does not match ("${styleText("red", JSON.stringify(vData))}")`)
             process.exit(1)
         }
     }
+    const id = `${ext.info.vendor_id}.${ext.info.id}`
+    console.log(`Extension data ${styleText("green", id)}:`, styleText("green", "Ok"))
 }
 
 enumerateExtensions(registryFolder).forEach((ext) => {
