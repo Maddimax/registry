@@ -4,7 +4,7 @@
   "description": "We register stuff",
   "scripts": {
     "all": "npm run validate && npm run update-ext-badge",
-    "update-ext-badge": "npx badge Extensions $(find registry -name extension.json | wc -l) :brightgreen > badges/extensions.svg",
+    "update-ext-badge": "npx badge Extensions $(find registry -name extension.json -o -name pack.json | wc -l) :brightgreen > badges/extensions.svg",
     "validate": "node scripts/validate.js"
   },
   "author": "",
