@@ -15,15 +15,11 @@
     },
     "latest": "1.0.2",
     "versions": {
-        "1.0.2": {
+        "0.7": {
             "sources": [
                 {
-                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
-                    "sha256": "1f84eede6bd6bebec805b2f35c4f8c7f18c8dbabac88122889ac83feee47d984",
-                    "platform": {
-                        "name": "Windows",
-                        "architecture": "x86_64"
-                    }
+                    "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.7/ValeLS.zip",
+                    "sha256": "baf38eeccfd5f8e9acfb7c9817c74eb66e53b440170bb901f485d8bc09610c4b"
                 }
             ],
             "metadata": {
@@ -36,23 +32,18 @@
                     "ValeLS",
                     "Qt"
                 ],
-                "Type": "Script",
                 "Vendor": "The Qt Company",
                 "License": "GPL",
-                "Version": "1.0.2",
+                "Version": "0.7",
                 "Category": "Language Server",
                 "VendorId": "theqtcompany",
                 "Copyright": "(C) The Qt Company 2024",
+                "Type": "Script",
                 "Languages": [
                     "en",
                     "de"
                 ],
                 "Description": "Provides an integration of the Vale language server",
-                "LongDescription": [
-                    "This is a long description",
-                    "so we break it up into lines",
-                    "to make it easier to read"
-                ],
                 "Dependencies": [
                     {
                         "Id": "lualanguageclient",
@@ -60,11 +51,11 @@
                     }
                 ],
                 "Experimental": true,
-                "CompatVersion": "1.0.2",
+                "CompatVersion": "0.4",
                 "DisabledByDefault": false
             }
         },
-        "1.0.1": {
+        "0.5": {
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",
@@ -83,7 +74,7 @@
                 ],
                 "Vendor": "The Qt Company",
                 "License": "GPL",
-                "Version": "1.0.1",
+                "Version": "0.5",
                 "Category": "Language Server",
                 "VendorId": "theqtcompany",
                 "Copyright": "(C) The Qt Company 2024",
@@ -100,11 +91,11 @@
                     }
                 ],
                 "Experimental": true,
-                "CompatVersion": "1.0.1",
+                "CompatVersion": "0.4",
                 "DisabledByDefault": false
             }
         },
-        "1.0.0": {
+        "0.4": {
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.4/ValeLS.zip",
@@ -123,7 +114,7 @@
                 ],
                 "Vendor": "The Qt Company",
                 "License": "GPL",
-                "Version": "1.0.0",
+                "Version": "0.4",
                 "Category": "Language Server",
                 "VendorId": "theqtcompany",
                 "Copyright": "(C) The Qt Company 2024",
