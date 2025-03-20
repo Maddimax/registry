@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "ajv-cli": "^5.0.0",
-    "badge-maker": "^4.1.0"
+    "badge-maker": "^4.1.0",
+    "probe-image-size": "^7.2.3"
   }
 }
