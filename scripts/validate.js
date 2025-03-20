@@ -53,6 +53,13 @@ function validate(validator, ext) {
 }
 
 function validateExtensionData(ext) {
+    const iData = {
+        id: ext.info.id,
+        vendorId: ext.info.vendor_id,
+        display_name: ext.info.display_name,
+        display_vendor: ext.info.display_vendor,
+    }
+
     for (version in ext.versions) {
         const v = ext.versions[version]
         const metaData = v.metadata
@@ -60,10 +67,8 @@ function validateExtensionData(ext) {
         const vData = {
             id: metaData.Id,
             vendorId: metaData.VendorId,
-        }
-        const iData = {
-            id: ext.info.id,
-            vendorId: ext.info.vendor_id,
+            display_name: metaData.Name,
+            display_vendor: metaData.Vendor,
         }
 
         if (JSON.stringify(vData) !== JSON.stringify(iData)) {
