@@ -47,7 +47,7 @@
                 "Dependencies": [
                     {
                         "Id": "lualanguageclient",
-                        "Version": "15.0.0"
+                        "Version": "20.0.0"
                     }
                 ],
                 "Experimental": true,
@@ -55,7 +55,7 @@
                 "DisabledByDefault": false
             }
         },
-        "0.5": {
+        "0.5.0": {
             "sources": [
                 {
                     "url": "https://github.com/qt-creator/ValeLS/releases/download/v0.5/ValeLS.zip",

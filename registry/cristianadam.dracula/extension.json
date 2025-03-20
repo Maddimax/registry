@@ -9,7 +9,7 @@
     },
     "latest": "1.0.0",
     "versions": {
-        "1.0.0": {
+        "15.0.1": {
             "sources": [
                 {
                     "url": "https://github.com/cristianadam/qt-creator-dracula/releases/download/v15.0.1/Dracula-15.0.1-Windows-x64.7z",

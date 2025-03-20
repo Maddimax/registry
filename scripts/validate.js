@@ -70,6 +70,11 @@ function validateExtensionData(ext) {
             console.error(`Version "${version}" metadata ("${styleText("green", JSON.stringify(iData))}") does not match ("${styleText("red", JSON.stringify(vData))}")`)
             process.exit(1)
         }
+
+        if (version !== metaData.Version) {
+            console.error(`The metadata version field (${styleText("green", metaData.Version)}) does not match the key ${styleText("red", version)}`)
+            process.exit(1)
+        }
     }
     const id = `${ext.info.vendor_id}.${ext.info.id}`
     console.log(`Extension data ${styleText("green", id)}:`, styleText("green", "Ok"))
