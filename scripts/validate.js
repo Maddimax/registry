@@ -9,13 +9,15 @@ function styleText(color, text) {
     return styleTextOrg(color, text, { validateStream: process.env.CI !== "true" })
 }
 
-const extensionSchema = require(path.join(__dirname, "..", "schema", "extension.schema.json"))
-const packSchema = require(path.join(__dirname, "..", "schema", "pack.schema.json"))
+const rootFolder = path.join(__dirname, "..")
 
-const baseSchema = require(path.join(__dirname, "..", "schema", "base.schema.ref.json"))
-const sourceSchema = require(path.join(__dirname, "..", "schema", "source.schema.ref.json"))
-const versionSchema = require(path.join(__dirname, "..", "schema", "version.schema.ref.json"))
-const pluginMetaDataSchema = require(path.join(__dirname, "..", "schema", "plugin-meta-data.schema.ref.json"))
+const extensionSchema = require(path.join(rootFolder, "schema", "extension.schema.json"))
+const packSchema = require(path.join(rootFolder, "schema", "pack.schema.json"))
+
+const baseSchema = require(path.join(rootFolder, "schema", "base.schema.ref.json"))
+const sourceSchema = require(path.join(rootFolder, "schema", "source.schema.ref.json"))
+const versionSchema = require(path.join(rootFolder, "schema", "version.schema.ref.json"))
+const pluginMetaDataSchema = require(path.join(rootFolder, "schema", "plugin-meta-data.schema.ref.json"))
 
 const ajv = new Ajv({ allowUnionTypes: true })
 ajv.addSchema(baseSchema)
@@ -26,7 +28,7 @@ ajv.addSchema(pluginMetaDataSchema)
 const validateExtension = ajv.compile(extensionSchema)
 const validatePack = ajv.compile(packSchema)
 
-const registryFolder = path.join(__dirname, "..", "registry")
+const registryFolder = path.join(rootFolder, "registry")
 
 function enumerateExtensions(directory) {
     return fs.readdirSync(directory).map((folder) => {
@@ -39,6 +41,34 @@ function enumerateExtensions(directory) {
         }
         throw new Error(`No extension or pack found in ${folder}`)
     })
+}
+
+function checkDirectoryContents(directory) {
+    // Make sure that each extension folder only contains the allowed files
+    const allowedFiles = ["extension.json", "pack.json", "icon.png", "icon@2x.png"]
+
+    const files = fs.readdirSync(directory)
+    if (!files.includes("extension.json") && !files.includes("pack.json")) {
+        console.error(`No extension or pack found in ${styleText('red', path.relative(rootFolder, directory))}`)
+        process.exit(1)
+    }
+
+    for (const file of files) {
+        if (!allowedFiles.includes(file)) {
+            console.error(`Unexpected file found in ${styleText('green', path.relative(rootFolder, directory))}: ${styleText('red', file)}`)
+            console.log('Allowed files:', allowedFiles)
+            process.exit(1)
+        }
+    }
+}
+
+function checkExtensionDirectoryContents(directory) {
+    const extensions = fs.readdirSync(directory)
+    for (const extension of extensions) {
+        checkDirectoryContents(path.join(directory, extension))
+    }
+
+    console.log(`All extensions in ${styleText("green", path.relative(rootFolder, directory))} have the correct files`)
 }
 
 function validate(validator, ext) {
@@ -84,6 +114,8 @@ function validateExtensionData(ext) {
     const id = `${ext.info.vendor_id}.${ext.info.id}`
     console.log(`Extension data ${styleText("green", id)}:`, styleText("green", "Ok"))
 }
+
+checkExtensionDirectoryContents(registryFolder)
 
 enumerateExtensions(registryFolder).forEach((ext) => {
     if (ext.endsWith('extension.json')) {
