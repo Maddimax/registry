@@ -62,12 +62,15 @@ async function main(argv) {
         console.error(stderr);
         return 1;
     }
+
+    const filesToCheck = stdout
+        .split('\n')
+        .filter(file => file.includes('registry') && path.basename(file) === 'extension.json')
+
     const failedHashes
         = (await Promise.all(
             (await Promise.all(
-                stdout
-                    .split('\n')
-                    .filter(file => file.includes('registry') && path.basename(file) === 'extension.json')
+                filesToCheck
                     .map(async file => JSON.parse(await fs.readFile(file)))
                     .map(async content => Object.values((await content).versions))))
                 .flat()
@@ -81,7 +84,10 @@ async function main(argv) {
         return failedHashes;
     }
 
-    console.log(styleText('green', 'All hashes match'));
+    if (filesToCheck.length > 0)
+        console.log(styleText('green', 'All hashes match'));
+    else
+        console.log(styleText('green', 'No extension changed'));
     return 0
 }
 
