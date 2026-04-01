@@ -2,6 +2,7 @@
 """Build aggregated registry.json from individual agent directories."""
 
 import argparse
+import base64
 import copy
 import json
 import os
@@ -513,6 +514,9 @@ def process_entry(
             f"  - {e}" for e in icon_errors
         ]
     entry["icon"] = f"{base_url}/{entry_id}.svg"
+    entry["icon_data"] = "data:image/svg+xml;base64," + base64.b64encode(
+        icon_path.read_bytes()
+    ).decode()
 
     return entry, []
 
